@@ -1,0 +1,57 @@
+/* Container row: flex horizontal layout */
+.row {
+    display: flex;
+    height: 100vh;           /* Full viewport height */
+    margin: 0;
+    padding: 0;
+    background-color: #36393f; /* Overall background */
+}
+
+/* Sidebar container */
+.two.columns {
+    background-color: #2f3136;
+    width: 280px;            /* fixed width */
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    color: #dcddde;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y: auto;
+    box-sizing: border-box; /* include padding inside width */
+}
+
+/* Main content (right panel) */
+.ten.columns {
+    flex-grow: 1;            /* Take up remaining width */
+    padding: 30px;
+    color: #dcddde;
+    overflow-y: auto;
+}
+
+/* Labels in sidebar */
+.two.columns label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #b9bbbe;
+}
+
+/* Inputs */
+.two.columns input[type="number"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #202225;
+    color: #dcddde;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box; /* include padding in width */
+}
+
+/* Focus effect for inputs */
+.two.columns input[type="number"]:focus {
+    outline: none;
+    border: 1px solid #7289da;
+    background-color: #2f3136;
+}

@@ -5,8 +5,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = Dash(__name__, external_stylesheets=external_stylesheets)
+app = Dash(__name__)
 
 empty_fig = px.line(title="Stock Price Simulation")
 empty_fig.update_layout(showlegend=True)
@@ -36,14 +35,14 @@ app.layout = html.Div([
         html.Label("Number of Simulations:"),
         dcc.Input(id='Num_Simulations_Input', type='number', value=100),
         html.Br(),
-        
+
     ], className="two columns"),
 
     html.Div([
         html.H4("Black-Scholes Option Price:"),
         html.Div(id='Call_Price'),
         html.Br(),
-        
+
         html.H4("Monte Carlo Simulated Option Price:"),
         html.Div(id='Simulated_Call_Price'),
         html.Br(),
@@ -53,7 +52,6 @@ app.layout = html.Div([
 
     ], className="ten columns"),
 ], className="row")
-
 
 @app.callback(
     Output('Call_Price', 'children'),
@@ -136,6 +134,7 @@ def simulated_price_of_european_call_option(ST, K, r, T):
     final_prices = ST[:, -1]
     payoffs = np.maximum(0, final_prices - K)
     call_price = np.exp(-r * T) * np.mean(payoffs)
+    print(np.exp(-r * T))
     return call_price
 
 
