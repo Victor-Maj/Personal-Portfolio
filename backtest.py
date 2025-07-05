@@ -31,8 +31,8 @@ class Backtest:
         VaR_historical = -np.percentile(returns.dropna(), (1 - confidence_level) * 100)
         return VaR_historical * np.sqrt(horizon)
     
-    #def calculate_beta(self, market_returns):
-    #    covariance = np.cov(self.returns, market_returns)[0, 1]
+    #def calculate_beta(self):
+    #    covariance = np.cov(self.signal_returns, self.returns)[0, 1]
     #    beta = covariance / market_returns.var()
     #    return beta
     
