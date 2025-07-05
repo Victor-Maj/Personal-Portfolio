@@ -3,6 +3,8 @@ import pandas as pd
 from typing import List, Union
 import yfinance as yf
 
+
+
 def get_permutation(
     ohlc: Union[pd.DataFrame, List[pd.DataFrame]], start_index: int = 0, seed=None
 ):

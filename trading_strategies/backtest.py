@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 class Backtest:
     def __init__(self, ohlc: pd.DataFrame, signal: pd.Series):
         self.prices                = ohlc['close']
         self.returns               = np.log(self.prices).diff().shift(-1)
         self.signal                = signal
-        self.signal_returns        =  self.signal * self.returns
+        self.signal_returns        = self.signal * self.returns
 
 
     """Risk Metrics """
@@ -89,6 +90,14 @@ class Backtest:
             'Value at Risk (VaR)': f"{self.calculate_value_at_risk(confidence_level, horizon, use_signal=True):.4f}"
         }
 
+        plt.style.use("dark_background")
+        self.signal_returns.cumsum().plot(color='red', figsize=(10, 6))
+        plt.title("In-Sample Strategy")
+        plt.ylabel('Cumulative Log Return')
+        plt.xlabel('Date')
+        plt.grid(True, which='major', linestyle='--', alpha=0.5)
+        plt.tight_layout()
+        plt.show()
         return pd.DataFrame(report)
 
 
