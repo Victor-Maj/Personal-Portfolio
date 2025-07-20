@@ -59,7 +59,10 @@ class Backtest:
 
 
     """Performance Consistency"""
-    
+    #def number_of_trades(self):
+
+
+
     #def calculate_win_rate(self):
     #    return None
 
